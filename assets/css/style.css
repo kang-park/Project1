@@ -12,10 +12,11 @@ body{
         border-bottom: solid 5px black;
         z-index: 10000;
     }
-    .brand-logo{
-        height:60px;
-        width:60px;
-    }
+   .icon{
+       height: 50px;
+       width: 50px;
+   }
+   
     /* changed to side_nave */
     #side_nav{ 
         background: #cfcfcf;
