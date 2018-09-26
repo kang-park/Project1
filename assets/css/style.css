@@ -7,12 +7,23 @@ body{
       #cfcfcf 30px
     );
     }
-    .col-3{
+    #nav {
+        position:fixed;
+        border-bottom: solid 5px black;
+        z-index: 10000;
+    }
+    .brand-logo{
+        height:60px;
+        width:60px;
+    }
+    /* changed to side_nave */
+    #side_nav{ 
         background: #cfcfcf;
         border: solid rgb(128, 128, 128) 1px;
         opacity: .88;
         box-shadow: 5px 5px;
         position: fixed;
+        z-index: 10000;
     }
     .row-btn{
         margin-left: 20px;
@@ -29,4 +40,8 @@ body{
     .card{
         max-width: 250px;
         max-height: 250px;
+    }
+    #map{
+        height: 100%;
+        margin: 10px;
     }
