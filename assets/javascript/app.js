@@ -24,6 +24,7 @@ const signIn = () => {
     } else {
         let email = $(".email-input").val().trim();
         let password = $(".password-input").val().trim();
+        workingUser = email;
         //if email is too short or not correct or input
         if (email.length < 5) {
             $(".msg").append("Please enter an email address.");
@@ -60,8 +61,8 @@ const signUp = () => {
         return;
     }
     // what to do when a password is not entered or too short
-    if (password.length < 6) {
-        $(".msg").append("Please enter a password longer than 6 characters");
+    if (password.length < 6 || password.match(/[A-z]/) || password.match(/[A-Z]/) || password.match(/\d/) ) {
+        $(".msg").append("Please enter a password longer than 6 characters, has at least 1 capital letter, and 1 number.");
         return;
     }
     //creates a new user with an email and password
@@ -105,10 +106,10 @@ const passReset = () => {
 //saves recent searches in database for each user
 // will create database branch by username, if not already created, then brings up recent searches. only last 5 searches. 
 const searchSave = () => {
-
+    let recentSearch = $(".search-input").val().trim();
+    
 }
 
 $(".signIn").on("click", signIn);
 $(".signUp").on("click", signUp);
 $(".restPass").on("click",passReset);
-$(".search").on("click", searchSave);
