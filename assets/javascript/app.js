@@ -107,7 +107,9 @@ const passReset = () => {
 // will create database branch by username, if not already created, then brings up recent searches. only last 5 searches. 
 const searchSave = () => {
     let recentSearch = $(".search-input").val().trim();
-    
+    db.ref(workingUser).set({
+        recents: recentSearch,
+    })
 }
 
 $(".signIn").on("click", signIn);
