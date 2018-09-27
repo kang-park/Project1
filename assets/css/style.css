@@ -1,0 +1,36 @@
+body{
+background: repeating-linear-gradient(
+  -45deg,
+  #292828,
+  #464545 10px,
+  #173996 15px,
+  #1fa16b 30px
+);
+}
+.col-3{
+    background: #cfcfcf;
+    border: solid rgb(128, 128, 128) 1px;
+    opacity: .88;
+    box-shadow: 5px 5px;
+    position: fixed;
+}
+.row-btn{
+    margin-left: 20px;
+}
+.food-name{
+    margin-left: 20px;
+}
+.nav-link{
+    color:rgb(68, 55, 55);
+}
+.btn{
+    margin-bottom: 100px;
+}
+.card{
+    max-width: 250px;
+    max-height: 250px;
+}
+.icon{
+    width:60px;
+    height:60px;
+}
