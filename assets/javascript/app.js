@@ -5,9 +5,25 @@ let food = [];
 //zomato api bffe3bea078cbc9eee86b514973b129e
 $(document).ready(function(){
 
+  function signInPage(){
+    $("body").addClass("signIn");
+    let sContainer = $("<div class='container mt-5 pt-5 px-3' id='sign-in'>");
+    let imgContainer = $("<div class='imgContainer d-flex justify-content-center p-1'>")
+    let sIcon = $("<img src='images/Cravings3.jpg' class ='logo rounded'>")
+    let eInput = $("<input id='txtEmail' type='email' placeholder='email'>");
+    let pInput = $("<input id='txtPassword' type='password' placeholder='password'>");
+    let pSignIn = $("<button id='btnLogin' class='btn btn-action init'>").text('Sign In');
+    let pSignUp = $("<button id='btnSignUp' class='btn btn-secondary init'>").text('Sign Up');
+    imgContainer.append(sIcon);
+    sContainer.append( imgContainer,eInput,pInput,pSignIn,pSignUp);
+    $("#card_list").prepend(sContainer);
+    $("nav").hide();
+  }
+  signInPage();
+
 /*add this to your html -> <script src="https://storage.googleapis.com/code-snippets/rapidapi.min.js"></script> */
 var rapid = new RapidAPI("default-application_5b85e35fe4b02d6cfa69e89b", "39d8805b-7d44-474d-92c4-b6d5a8def142");
-$("#search").on('click', function(){
+$("#search").on('click tap', function(){
 rapid.call('Zomato', 'search', { 
 	'apiKey': 'bffe3bea078cbc9eee86b514973b129e',
 	'coordinates': '30.26875275473545, -97.7448378504939',
@@ -127,8 +143,8 @@ $(".filter").on('click', function(){
 
 
 
-//when a card is double clicked
-$(".card").dblclick(function() {
+//when a card is clicked
+$(".card").on('dblclick touchstart',function() {
   //grab info and image from card
   let dataName = $($(this)[0].children[2].children[0]).clone();
   let dataAddress = $($(this)[0].children[2].children[3]).clone();
@@ -139,7 +155,7 @@ $(".card").dblclick(function() {
   //hide all the cards
   $('.card').hide();
   //prepend pop-up to card_list div
-  $('#card_list').prepend("<div class='pop-up p-5 rounded'></div>");
+  $('#card_list').prepend("<div class='pop-up m-3 p-2 rounded'></div>");
   //prepend X in pop-up info
   $(".pop-up").prepend("<button class='exit btn-dark'>X</button>")
 
@@ -179,3 +195,4 @@ $(".exit").on('click', function(){
 });
 
 })
+

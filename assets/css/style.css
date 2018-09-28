@@ -7,6 +7,22 @@ body{
       #185ddd 30px
     );
     }
+
+    .signIn{
+        background-image: url(https://media.giphy.com/media/DITaUdrnjzw4g/giphy.gif);
+        background-size: cover;
+    }
+    .logo{
+        height: 100px;
+        weight:100px;
+    }
+    #sign-in{
+        width:400px;
+    }
+    #txtEmail,#txtPassword{
+        font-weight: 700;
+    }
+
     #nav {
         position:fixed;
         border-bottom: solid 5px black;
@@ -39,8 +55,8 @@ body{
         margin-bottom: 100px;
     }
     .card{
-        max-width: 350px;
-        max-height: 250px;
+        width: 350px;
+        height: 250px;
     }
     /* map size */
     #map{
@@ -49,8 +65,8 @@ body{
     }
     /* pop-up diameter */
     .pop-up{
-        min-width: 550px;
-        min-height: 500px;
+        min-width:370px;
+        max-width: 500px;
         background: rgba(255, 255, 255, 0.678);
     }
     /* set image size */
@@ -63,4 +79,10 @@ body{
     .exit{
         height:30px;
         border-radius: 50%;
+    }
+
+    @media only screen and (min-width: 600px)  {
+        .pop-up{
+            width: 580px;
+        }
     }
