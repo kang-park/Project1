@@ -137,7 +137,7 @@ $(".card").dblclick(function() {
   let dataImg = $($(this)[0].children[0].children[0]).clone();
 
   //hide all the cards
-  $('.card').hide('slow');
+  $('.card').hide();
   //prepend pop-up to card_list div
   $('#card_list').prepend("<div class='pop-up p-5 rounded'></div>");
   //prepend X in pop-up info
@@ -152,6 +152,8 @@ $(".card").dblclick(function() {
   $('.pop-up').append("<div class='m-2 rounded' id='map'></div>");
   //give image a rounded adge and make it center
   $(".activator").addClass('rounded mx-auto d-block');
+  $('.pop-up').hide();
+  $('.pop-up').show('slow');
 
   
  
