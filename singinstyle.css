@@ -8,3 +8,9 @@ body{
 .logo{
     margin-left: 100px;
 }
+#inputEmail3,
+#inputPassword3{
+    background: rgba(245, 245, 245, 0.705);
+    font-weight: 700;
+}
+
