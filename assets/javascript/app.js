@@ -193,6 +193,5 @@ $(".exit").on('click', function(){
 
 
 });
-
-})
-
+  
+  })
