@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Cravings App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+  <!-- css -->
   <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
   <!-- Compiled and minified CSS Materialize -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -42,7 +45,7 @@
       </div>
     </div>
     <div class="container-fluid d-flex justify-content-center mt-5 mr-5 p-5">
-      <div class='row' id="card_list">
+      <div class='row p-5' id="card_list">
       </div>
     </div>
    
@@ -57,6 +60,7 @@
     crossorigin="anonymous"></script>
   <!-- js -->
   <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/firebase.js"></script>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr7MnP23P5ExSg_i0SgcB6jOeReHF7M7w&libraries=places&callback=initMap"
   async defer></script>
