@@ -5,9 +5,25 @@ let food = [];
 //zomato api bffe3bea078cbc9eee86b514973b129e
 $(document).ready(function(){
 
+  function signInPage(){
+    $("body").addClass("signIn");
+    let sContainer = $("<div class='container mt-5 pt-5 px-3' id='sign-in'>");
+    let imgContainer = $("<div class='imgContainer d-flex justify-content-center p-1'>")
+    let sIcon = $("<img src='images/Cravings3.jpg' class ='logo rounded'>")
+    let eInput = $("<input id='txtEmail' type='email' placeholder='email'>");
+    let pInput = $("<input id='txtPassword' type='password' placeholder='password'>");
+    let pSignIn = $("<button id='btnLogin' class='btn btn-action init'>").text('Sign In');
+    let pSignUp = $("<button id='btnSignUp' class='btn btn-secondary init'>").text('Sign Up');
+    imgContainer.append(sIcon);
+    sContainer.append( imgContainer,eInput,pInput,pSignIn,pSignUp);
+    $("#card_list").prepend(sContainer);
+    $("nav").hide();
+  }
+  signInPage();
+
 /*add this to your html -> <script src="https://storage.googleapis.com/code-snippets/rapidapi.min.js"></script> */
 var rapid = new RapidAPI("default-application_5b85e35fe4b02d6cfa69e89b", "39d8805b-7d44-474d-92c4-b6d5a8def142");
-$("#search").on('click', function(){
+$("#search").on('click tap', function(){
 rapid.call('Zomato', 'search', { 
 	'apiKey': 'bffe3bea078cbc9eee86b514973b129e',
 	'coordinates': '30.26875275473545, -97.7448378504939',
@@ -127,8 +143,8 @@ $(".filter").on('click', function(){
 
 
 
-//when a card is double clicked
-$(".card").dblclick(function() {
+//when a card is clicked
+$(".card").on('dblclick touchstart',function() {
   //grab info and image from card
   let dataName = $($(this)[0].children[2].children[0]).clone();
   let dataAddress = $($(this)[0].children[2].children[3]).clone();
@@ -137,9 +153,9 @@ $(".card").dblclick(function() {
   let dataImg = $($(this)[0].children[0].children[0]).clone();
 
   //hide all the cards
-  $('.card').hide('slow');
+  $('.card').hide();
   //prepend pop-up to card_list div
-  $('#card_list').prepend("<div class='pop-up p-5 rounded'></div>");
+  $('#card_list').prepend("<div class='pop-up m-3 p-2 rounded'></div>");
   //prepend X in pop-up info
   $(".pop-up").prepend("<button class='exit btn-dark'>X</button>")
 
@@ -152,6 +168,8 @@ $(".card").dblclick(function() {
   $('.pop-up').append("<div class='m-2 rounded' id='map'></div>");
   //give image a rounded adge and make it center
   $(".activator").addClass('rounded mx-auto d-block');
+  $('.pop-up').hide();
+  $('.pop-up').show('slow');
 
   
  
@@ -176,123 +194,5 @@ $(".exit").on('click', function(){
 
 });
 
-
 })
 
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyDVrSkm_KDrlSCH0KDWo3pQIKfW5xRRWJk",
-  authDomain: "cravings-e8497.firebaseapp.com",
-  databaseURL: "https://cravings-e8497.firebaseio.com",
-  projectId: "cravings-e8497",
-  storageBucket: "cravings-e8497.appspot.com",
-  messagingSenderId: "938938502432"
-};
-firebase.initializeApp(config);
-
-//firebase database reference
-let auth = firebase.auth();
-let dB = firebase.database();
-let user = firebase.auth().currentUser;
-
-//global variables to hold for firebase
-let workingUser = '';
-
-// handles signing in 
-const signIn = () => {
-  if (user) {
-      auth.signOut();
-  } else {
-      let email = $(".email-input").val().trim();
-      let password = $(".password-input").val().trim();
-      workingUser = email;
-      //if email is too short or not correct or input
-      if (email.length < 5) {
-          $(".msg").append("Please enter an email address.");
-          return;
-      }
-      //if password length is not correct or input
-      if (password.length < 6) {
-          $(".msg").append("Please enter a password.");
-          return;
-      }
-      //starting the sign in process
-      auth.signInWithEmailAndPassword(email, password).cath(function (error) {
-          //space for handeling errors
-          let errorCode = error.code;
-          let errorMsg = error.message;
-          //lets user know if password is incorrect
-          if (errorCode === 'auth/wrong-password') {
-              $(".msg").append("Wrong Password.");
-          } else {
-              $(".msg").append(errorMsg);
-          }
-      })
-
-  }
-}
-
-// handles when a user is signing up for the first time
-const signUp = () => {
-  let email = $(".email-input").val().trim();
-  let password = $(".password-input").val().trim();
-  // what to do when an email address is not entered or short
-  if (email.lenght < 5) {
-      $(".msg").append("Please enter an email address");
-      return;
-  }
-  // what to do when a password is not entered or too short
-  if (password.length < 6 || password.match(/[A-z]/) || password.match(/[A-Z]/) || password.match(/\d/) ) {
-      $(".msg").append("Please enter a password longer than 6 characters, has at least 1 capital letter, and 1 number.");
-      return;
-  }
-  //creates a new user with an email and password
-  auth.createUserWithEmailAndPassword(email, password).catch(function (error) {
-      let errorCode = error.code;
-      let errorMsg = error.message;
-      if (errorCode === "auth/weak-password") {
-          $(".msg").append("This password is too weak, please create a stronger password");
-      } else {
-          $(".msg").append(errorMsg);
-      }
-      emailVerif();
-  })
-}
-
-// handels sending an email verification
-const emailVerif = () => {
-  user.sendEmailVerification().then(function() {
-      $(".msg").append("Email verification has been sent!");
-  })
-}
-
-//handels password resets
-const passReset = () => {
-  let email = $(".email-input").val().trim();
-  auth.sendPasswordResetEmail(email).then(function() {
-      $(".msg").append("Password reset email has been sent!");
-  }).catch(function(error) {
-      let errorCode = error.code;
-      let errorMsg = error.message;
-      if (errorCode === "auth/invalid-email") {
-          $(".msg").append("Email is invalid");
-          return;
-      }
-      if (errorCode === "auth/user-not-found") {
-          $(".msg").append("Email/user was not found");
-          return;
-      }
-  })
-}
-//saves recent searches in database for each user
-// will create database branch by username, if not already created, then brings up recent searches. only last 5 searches. 
-const searchSave = () => {
-  let recentSearch = $(".search-input").val().trim();
-  db.ref(workingUser).set({
-      recents: recentSearch,
-  })
-}
-
-$(".signIn").on("click", signIn);
-$(".signUp").on("click", signUp);
-$(".restPass").on("click",passReset);
