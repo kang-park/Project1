@@ -11,7 +11,11 @@ console.log('firebase');
   };
   firebase.initializeApp(config);
 
+
   $(document).ready(function(){
+      
+  let user;
+  let database = firebase.database();
 
   //DOM get elements
   const txtEmail = document.getElementById('txtEmail');
@@ -25,6 +29,8 @@ console.log('firebase');
       const email = txtEmail.value;
       const pass = txtPassword.value;
       const auth = firebase.auth();
+      
+    $(".user").text(email);
       //sign in
   const promise = auth.signInWithEmailAndPassword(email,pass); 
   promise.catch(e=> console.log(e.message));
@@ -39,6 +45,8 @@ console.log('firebase');
     const email = txtEmail.value;
     const pass = txtPassword.value;
     const auth = firebase.auth();
+
+    $(".user").text(email);
     //sign up
 const promise = auth.createUserWithEmailAndPassword(email,pass);
 promise.catch(e=> console.log(e.message));
@@ -56,3 +64,5 @@ firebase.auth().onAuthStateChanged(firebaseUser=>{
     }
 })
   })
+
+ 
