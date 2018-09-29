@@ -12,8 +12,8 @@ $(document).ready(function(){
     let sIcon = $("<img src='Images/Cravings3.jpg' class ='logo rounded'>")
     let eInput = $("<input id='txtEmail' type='email' placeholder='email'>");
     let pInput = $("<input id='txtPassword' type='password' placeholder='password'>");
-    let pSignIn = $("<button id='btnLogin' class='btn btn-action init'>").text('Sign In');
-    let pSignUp = $("<button id='btnSignUp' class='btn btn-secondary init'>").text('Sign Up');
+    let pSignIn = $("<button id='btnLogin' class='btn btn-action init m-1'>").text('Sign In');
+    let pSignUp = $("<button id='btnSignUp' class='btn btn-secondary init m-1'>").text('Sign Up');
     imgContainer.append(sIcon);
     sContainer.append( imgContainer,eInput,pInput,pSignIn,pSignUp);
     $("#card_list").prepend(sContainer);
