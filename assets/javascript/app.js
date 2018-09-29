@@ -9,7 +9,7 @@ $(document).ready(function(){
     $("body").addClass("signIn");
     let sContainer = $("<div class='container mt-5 pt-5 px-3' id='sign-in'>");
     let imgContainer = $("<div class='imgContainer d-flex justify-content-center p-1'>")
-    let sIcon = $("<img src='Images/Cravings3.jpg' class ='logo rounded'>")
+    let sIcon = $("<img src='images/Cravings3.jpg' class ='logo rounded'>")
     let eInput = $("<input id='txtEmail' type='email' placeholder='email'>");
     let pInput = $("<input id='txtPassword' type='password' placeholder='password'>");
     let pSignIn = $("<button id='btnLogin' class='btn btn-action init'>").text('Sign In');
